@@ -22,15 +22,6 @@ void init_pins()
     bi_decl(bi_2pins_with_names(PIN_RST, "RST", PIN_TRST, "TRST"));
     #endif
 
-#if ( BOARD_TYPE == BOARD_WERKZEUG_ALT )
-	gpio_init(8);			// set GPIO8 to input
-								// this wire shouldn't exist in the cable;
-								// because it's 5V on some boards
-
-	gpio_init(0);
-	gpio_set_dir(0, 1);	// set GPIO0 to output
-	gpio_put(0, 0);		// set GPIO0 (GND) to low
-#endif
 }
 
 pio_jtag_inst_t jtag = {

@@ -133,10 +133,11 @@
 
 #elif ( BOARD_TYPE == BOARD_WERKZEUG_ALT )
 
-#define PIN_TDI 2 
-#define PIN_TDO 9
-#define PIN_TCK 10
-#define PIN_TMS 1
+#define PIN_TDI 28
+#define PIN_TDO 7
+#define PIN_TCK 6
+#define PIN_TMS 29
+
 #define PIN_RST 4
 #define PIN_TRST 5
 
