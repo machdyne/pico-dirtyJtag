@@ -23,7 +23,7 @@ void init_pins()
     #endif
 
 #if ( BOARD_TYPE == BOARD_WERKZEUG_ALT )
-	gpio_init(8);			// set GPIO10 to input
+	gpio_init(8);			// set GPIO8 to input
 								// this wire shouldn't exist in the cable;
 								// because it's 5V on some boards
 
