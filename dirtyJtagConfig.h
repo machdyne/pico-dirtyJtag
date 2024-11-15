@@ -8,12 +8,13 @@
 #define BOARD_ADAFRUIT_ITSY  1
 #define BOARD_SPOKE_RP2040   2
 #define BOARD_WERKZEUG       4
+#define BOARD_WERKZEUG_ALT   5
 
 // Select the board type from the above
-#define BOARD_TYPE BOARD_PICO
+//#define BOARD_TYPE BOARD_PICO
 //#define BOARD_TYPE BOARD_ADAFRUIT_ITSY
 //#define BOARD_TYPE BOARD_SPOKE_RP2040
-//#define BOARD_TYPE BOARD_WERKZEUG
+#define BOARD_TYPE BOARD_WERKZEUG_ALT
 
 // General mapping
 // TDI  SPIO RX
@@ -90,6 +91,26 @@
 #define PIN_TDO 2
 #define PIN_TCK 0
 #define PIN_TMS 3
+#define PIN_RST 4
+#define PIN_TRST 5
+
+#define LED_INVERTED   1
+#define PIN_LED_TX     20
+#define PIN_LED_ERROR  21
+#define PIN_LED_RX     20
+
+#if ( USB_CDC_UART_BRIDGE )
+#define PIN_UART       uart0
+#define PIN_UART_TX    28
+#define PIN_UART_RX    29
+#endif // USB_CDC_UART_BRIDGE
+
+#elif ( BOARD_TYPE == BOARD_WERKZEUG_ALT )
+
+#define PIN_TDI 2 
+#define PIN_TDO 9
+#define PIN_TCK 10
+#define PIN_TMS 1
 #define PIN_RST 4
 #define PIN_TRST 5
 
