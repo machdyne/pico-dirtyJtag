@@ -18,10 +18,11 @@
 void init_pins()
 {
     bi_decl(bi_4pins_with_names(PIN_TCK, "TCK", PIN_TDI, "TDI", PIN_TDO, "TDO", PIN_TMS, "TMS"));
+    #if !( BOARD_TYPE == BOARD_QMTECH_RP2040_DAUGHTERBOARD )
     bi_decl(bi_2pins_with_names(PIN_RST, "RST", PIN_TRST, "TRST"));
+    #endif
 
 #if ( BOARD_TYPE == BOARD_WERKZEUG_ALT )
-
 	gpio_init(8);			// set GPIO10 to input
 								// this wire shouldn't exist in the cable;
 								// because it's 5V on some boards
@@ -40,7 +41,11 @@ pio_jtag_inst_t jtag = {
 void djtag_init()
 {
     init_pins();
+    #if !( BOARD_TYPE == BOARD_QMTECH_RP2040_DAUGHTERBOARD )
     init_jtag(&jtag, 1000, PIN_TCK, PIN_TDI, PIN_TDO, PIN_TMS, PIN_RST, PIN_TRST);
+    #else
+    init_jtag(&jtag, 1000, PIN_TCK, PIN_TDI, PIN_TDO, PIN_TMS, 255, 255);
+    #endif
 }
 typedef uint8_t cmd_buffer[64];
 static uint wr_buffer_number = 0;
